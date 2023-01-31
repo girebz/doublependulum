@@ -26,6 +26,11 @@ function drawPendulum() {
   context.arc(x2 + canvas.width / 2, canvas.height / 2 - y2, 10, 0, 2 * Math.PI);
   context.fill();
 
+  context.beginPath();
+  context.moveTo(x1 + canvas.width / 2, canvas.height / 2 - y1);
+  context.lineTo(x2 + canvas.width / 2, canvas.height / 2 - y2);
+  context.stroke();
+
   t += 0.05;
   requestAnimationFrame(drawPendulum);
 }
