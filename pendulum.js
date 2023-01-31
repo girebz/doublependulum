@@ -33,17 +33,15 @@ function theta(t, omega, phi) {
   return
 }
 
-s=L1*diff(diff(theta(t, omega1, phi1)t,h),t,h)/g;
-
 
 function drawPendulum() {
   context.clearRect(0, 0, canvas.width, canvas.height);
 
-  const x1 = a * s;
-  const y1 = b * Math.sqrt(1-s^2);
+  const x1 = L1 * (L1*diff(diff(theta(t, omega1, phi1)t,h),t,h)/g);
+  const y1 = L1 * Math.sqrt(1-(L1*diff(diff(theta(t, omega1, phi1)t,h),t,h)/g)^2);
 
-  const x2 = c * Math.sin(t + phaseDifference);
-  const y2 = d * Math.cos(t + phaseDifference);
+  const x2 = x1+L2*(L2*diff(diff(theta(t, omega2, phi2)t,h),t,h)/g);
+  const y2 = y2 + Math.sqrt(1-(L2*diff(diff(theta(t, omega2, phi2)t,h),t,h)/g)^2);
 
   context.beginPath();
   context.arc(x1 + canvas.width / 20, canvas.height / 2 - y1, 10, 0, 2 * Math.PI);
