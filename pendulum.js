@@ -7,13 +7,40 @@ const a = 100;
 const b = 100;
 const c = 75;
 const d = 75;
+const g=9,81;
+const omega1=0;
+const phi1=0;
+const L1=5;
+const omega2=0;
+const phi2=0;
+const L2=5;
+const h=0,00001;
+
 const phaseDifference = Math.PI / 4;
+
+/* La ecuación del péndulo es de la forma:
+\dfrac{d^2 \theta}{dt^2} = -\dfrac{g}{l}\sin(\theta)*/
+
+/*Derivada temporal:
+\dfrac{d\theta}{dt} = \lim_{\Delta_t \to 0} \dfrac{\theta(t + \Delta_t) - \theta(t)}{\Delta_t}
+*/
+
+function diff(func, x, h) {
+  return (func(x + h) - func(x)) / h;
+}
+
+function theta(t, omega, phi) {
+  return
+}
+
+s=L1*diff(diff(theta(t, omega1, phi1)t,h),t,h)/g;
+
 
 function drawPendulum() {
   context.clearRect(0, 0, canvas.width, canvas.height);
 
-  const x1 = a * Math.sin(t);
-  const y1 = b * Math.cos(t);
+  const x1 = a * s;
+  const y1 = b * Math.sqrt(1-s^2);
 
   const x2 = c * Math.sin(t + phaseDifference);
   const y2 = d * Math.cos(t + phaseDifference);
